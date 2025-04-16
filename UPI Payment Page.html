@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment - TicketEase</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333;
+        }
+        .navbar {
+            background-color: #00416A;
+            padding: 15px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .logo-container h1 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        a.LinkButton {
+            text-decoration: none;
+            padding: 8px 15px;
+            background-color: #00416A;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        a.LinkButton:hover {
+            background-color: #2A9D8F;
+            transform: translateY(-2px);
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            margin: 50px auto;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+        .qr-code {
+            width: 250px;
+            margin: 30px auto;
+            border: 2px solid #00416A;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .button {
+            background-color: #2A9D8F;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #21867A;
+            transform: translateY(-2px);
+        }
+        .payment-info {
+            background-color: #E8F4F8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .payment-info p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo-container">
+        <img src="logolocal.png" alt="TicketEase Logo">
+        <h1>TicketEase</h1>
+    </div>
+    <div class="nav-links">
+        <a href="home.html" class="LinkButton">Home</a>
+        <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+        <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+        <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+    </div>
+</div>
+
+<!-- UPI Payment Content -->
+<div class="container">
+    <h2>UPI Payment</h2>
+    <p>Scan the QR code below with your UPI app to complete the payment.</p>
+    <img src="IMG_9845 2.jpg" alt="QR Code" class="qr-code">
+    <div class="payment-info">
+        <p><strong>Amount:</strong> ₹<span id="amount">131</span></p>
+        <p><strong>Merchant:</strong> TicketEase Railways</p>
+        <p><strong>Transaction ID:</strong> TKT123456789</p>
+    </div>
+    <button class="button" onclick="confirmPayment()">Confirm Payment</button>
+    <p style="font-size: 14px; margin-top: 15px;">By confirming, you agree to our <a href="Terms and Conditions.html">Terms and Conditions</a>.</p>
+</div>
+
+<script>
+    // Display stored fare from localStorage
+    document.getElementById('amount').textContent = localStorage.getItem('fare') || '131';
+
+    // Confirm payment and generate ticket number
+    function confirmPayment() {
+        const randomTicketNo = `#${Math.floor(1000000000 + Math.random() * 9000000000)}`;
+        const fare = localStorage.getItem('fare');
+        
+        localStorage.setItem('ticketNo', randomTicketNo);
+        localStorage.setItem('fare', fare);
+        localStorage.setItem('paymentMethod', 'UPI');
+        
+        alert("Payment Successful! Redirecting to receipt...");
+        window.location.href = "Payment Receipt Page.html";
+    }
+</script>
+
+</body>
+</html>

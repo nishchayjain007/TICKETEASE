@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <style>
+        body {
+            background-color: #F4F4F9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+        .navbar {
+            background-color: #2A3D45;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo-container img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        .navbar a.LinkButton {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #2A3D45;
+            color: white;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a.LinkButton:hover {
+            background-color: #555555;
+        }
+        .content {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2A3D45;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #3E5C76;
+        }
+
+        .search-box-container{
+            background-color: white;
+            padding: 40px;
+            margin: 50px auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            border: 1px solid #E0E0E0;
+            
+
+        }
+        .search-box {
+            
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .button {
+            background-color: #FF6F61;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #cc0000;
+        }
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: 40px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .slide {
+            display: none;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .next {
+            right: 10px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .text {
+            color: #f2f2f2;
+            font-size: 20px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 10px;
+        }
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active {
+            background-color: #2A3D45;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+        }
+        .user-menu {
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .user-menu button {
+            background-color: #FF6F61;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="Logo">
+            <h1>TicketEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="LinkButton">Home</a>
+            <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+            <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+            <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+        </div>
+
+        <div class="user-menu">
+            <span id="username"></span>
+            <button onclick="signOut()">Sign Out</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>Book Your Local Train Ticket</h2>
+        <div class="search-box-container">  
+            <div class="search-box">
+                <label for="source">Source</label>
+                <select id="source">
+                    <option value="CSMT">CSMT</option>
+                    <option value="Masjid Bunder">Masjid Bunder</option>
+                    <option value="Sandhurst Road">Sandhurst Road</option>
+                    <option value="Byculla">Byculla</option>
+                    <option value="Chinchpokli">Chinchpokli</option>
+                    <option value="Currey Road">Currey Road</option>
+                    <option value="Parel">Parel</option>
+                    <option value="Dadar">Dadar</option>
+                    <option value="Matunga">Matunga</option>
+                    <option value="Sion">Sion</option>
+                    <option value="Kurla">Kurla</option>
+                    <option value="Vidyavihar">Vidyavihar</option>
+                    <option value="Ghatkopar">Ghatkopar</option>
+                    <option value="Vikhroli">Vikhroli</option>
+                    <option value="Kanjurmarg">Kanjurmarg</option>
+                    <option value="Bhandup">Bhandup</option>
+                    <option value="Nahur">Nahur</option>
+                    <option value="Mulund">Mulund</option>
+                    <option value="Thane">Thane</option>
+                    <option value="Kalwa">Kalwa</option>
+                    <option value="Mumbra">Mumbra</option>
+                    <option value="Diwa">Diwa</option>
+                    <option value="Kopar">Kopar</option>
+                    <option value="Dombivli">Dombivli</option>
+                    <option value="Thakurli">Thakurli</option>
+                    <option value="Kalyan">Kalyan</option>
+                    <option value="Sahad">Sahad</option>
+                    <option value="Ambivalli">Ambivalli</option>
+                    <option value="Titwala">Titwala</option>
+                    <option value="Khadavli">Khadavli</option>
+                    <option value="Vasind">Vasind</option>
+                    <option value="Asangaon">Asangaon</option>
+                    <option value="Atgaon">Atgaon</option>
+                    <option value="Kardi">Kardi</option>
+                    <option value="Vithalwadi">Vithalwadi</option>
+                    <option value="Ulhasnagar">Ulhasnagar</option>
+                    <option value="Ambernath">Ambernath</option>
+                    <option value="Badlapur">Badlapur</option>
+                    <option value="Vangani">Vangani</option>
+                    <option value="Shelu">Shelu</option>
+                    <option value="Neral">Neral</option>
+                    <option value="Bhivpuri Rd">Bhivpuri Rd</option>
+                    <option value="Karjat">Karjat</option>
+                    <option value="Kelavalli">Kelavalli</option>
+                    <option value="Dolavalli">Dolavalli</option>
+                    <option value="Lowjee">Lowjee</option>
+                    <option value="Khopoli">Khopoli</option>
+
+                </select>
+            
+        
+                <!-- <input type="text" id="source" placeholder="Enter Source Station" oninput="searchStation('source')"> -->
+            </div>
+            &nbsp;
+            <div class="search-box">
+                <label for="destination">Destination</label>
+                <select id="destination">
+                    <option value="CSMT">CSMT</option>
+                    <option value="Masjid Bunder">Masjid Bunder</option>
+                    <option value="Sandhurst Road">Sandhurst Road</option>
+                    <option value="Byculla">Byculla</option>
+                    <option value="Chinchpokli">Chinchpokli</option>
+                    <option value="Currey Road">Currey Road</option>
+                    <option value="Parel">Parel</option>
+                    <option value="Dadar">Dadar</option>
+                    <option value="Matunga">Matunga</option>
+                    <option value="Sion">Sion</option>
+                    <option value="Kurla">Kurla</option>
+                    <option value="Vidyavihar">Vidyavihar</option>
+                    <option value="Ghatkopar">Ghatkopar</option>
+                    <option value="Vikhroli">Vikhroli</option>
+                    <option value="Kanjurmarg">Kanjurmarg</option>
+                    <option value="Bhandup">Bhandup</option>
+                    <option value="Nahur">Nahur</option>
+                    <option value="Mulund">Mulund</option>
+                    <option value="Thane">Thane</option>
+                    <option value="Kalwa">Kalwa</option>
+                    <option value="Mumbra">Mumbra</option>
+                    <option value="Diwa">Diwa</option>
+                    <option value="Kopar">Kopar</option>
+                    <option value="Dombivli">Dombivli</option>
+                    <option value="Thakurli">Thakurli</option>
+                    <option value="Kalyan">Kalyan</option>
+                    <option value="Sahad">Sahad</option>
+                    <option value="Ambivalli">Ambivalli</option>
+                    <option value="Titwala">Titwala</option>
+                    <option value="Khadavli">Khadavli</option>
+                    <option value="Vasind">Vasind</option>
+                    <option value="Asangaon">Asangaon</option>
+                    <option value="Atgaon">Atgaon</option>
+                    <option value="Kardi">Kardi</option>
+                    <option value="Vithalwadi">Vithalwadi</option>
+                    <option value="Ulhasnagar">Ulhasnagar</option>
+                    <option value="Ambernath">Ambernath</option>
+                    <option value="Badlapur">Badlapur</option>
+                    <option value="Vangani">Vangani</option>
+                    <option value="Shelu">Shelu</option>
+                    <option value="Neral">Neral</option>
+                    <option value="Bhivpuri Rd">Bhivpuri Rd</option>
+                    <option value="Karjat">Karjat</option>
+                    <option value="Kelavalli">Kelavalli</option>
+                    <option value="Dolavalli">Dolavalli</option>
+                    <option value="Lowjee">Lowjee</option>
+                    <option value="Khopoli">Khopoli</option>
+
+                </select>
+                <!-- <input type="text" id="destination" placeholder="Enter Destination Station" oninput="searchStation('destination')"> -->
+            </div>
+        </div>  
+        <button class="button" onclick="getFare()">Get Fare</button>
+
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="station_map.jpg" alt="Mumbai Central">
+                <div class="text">Station Map</div>
+            </div>
+            <div class="slide fade">
+                <img src="dadar_platform_map.jpg" alt="Kurla Station">
+                <div class="text">Dadar Station Map</div>
+            </div>
+            <div class="slide fade">
+                <img src="churchgate.jpg" alt="Churchgate Station">
+                <div class="text">Churchgate Station</div>
+            </div>
+            <div class="slide fade">
+                <img src="bandra.jpg" alt="Bandra Station">
+                <div class="text">Bandra Station</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+        
+        <!-- Give Feedback Button -->
+        <button class="button" onclick="window.location.href='feedback.html'">Give Feedback</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TicketEase. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            document.getElementById('username').textContent = username ? `Welcome, ${username}` : 'Guest';
+        }
+
+        function signOut() {
+            localStorage.removeItem('username');
+            window.location.href = "login.html";
+        }
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        function searchStation(id) {
+            const input = document.getElementById(id).value;
+            console.log("Searching stations for: " + input);
+        }
+
+        function getFare() {
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+            if (source && destination) {
+                window.location.href = `bookingdetails.html?source=${encodeURIComponent(source)}&destination=${encodeURIComponent(destination)}`;
+            } else {
+                alert('Please enter both source and destination stations.');
+            }
+        }
+    </script>
+
+</body>
+</html>

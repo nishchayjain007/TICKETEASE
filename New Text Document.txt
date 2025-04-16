@@ -1,0 +1,24 @@
+<!-- navbar.html -->
+<div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="booking.html">Book Ticket</a>
+    <a href="show-tickets.html">Show Tickets</a>
+    <a href="cancel-ticket.html">Cancel Ticket</a>
+</div>
+
+<style>
+    .navbar {
+        background-color: #FF5733;
+        padding: 10px;
+        text-align: center;
+    }
+    .navbar a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+    .navbar a:hover {
+        text-decoration: underline;
+    }
+</style>
+

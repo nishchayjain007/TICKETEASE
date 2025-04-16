@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - TicketEase</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2A3D45;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container img {
+            height: 60px;
+        }
+
+        .logo-container h1 {
+            font-size: 28px;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            min-height: calc(100vh - 80px);
+            overflow: hidden;
+        }
+
+        .left-panel {
+            flex: 1;
+            background-image: url('train8.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100%;
+            border-right: 8px solid #ffffff;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: #ffffff;
+            box-shadow: -8px 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2A3D45;
+            font-family: 'Georgia', serif;
+        }
+
+        .form-group {
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            max-width: 350px;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #FFD700;
+            color: #1F2833;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ccac00;
+        }
+
+        .toggle-link {
+            margin-top: 20px;
+            color: #2A3D45;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .login-form, .register-form {
+            display: none;
+        }
+
+        .active-form {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                display: none;
+            }
+
+            .right-panel {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="TicketEase Logo">
+            <h1>Admin - TicketEase</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="left-panel"></div>
+        <div class="right-panel">
+            <h2 id="admin-form-title">Admin Login</h2>
+
+            <!-- Admin Login Form -->
+            <div id="admin-login-form" class="admin-login-form active-form">
+                <div class="form-group">
+                    <label for="admin-login-email">Email</label>
+                    <input type="email" id="admin-login-email" placeholder="Enter your admin email" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-login-password">Password</label>
+                    <input type="password" id="admin-login-password" placeholder="Enter your password" required>
+                </div>
+                <button id="admin-login-btn">Login</button>
+                
+            </div>
+
+           
+
+    <script type="module">
+        // Toggle between admin login and register forms
+        document.getElementById('show-admin-register').addEventListener('click', () => {
+            document.getElementById('admin-login-form').classList.remove('active-form');
+            document.getElementById('admin-register-form').classList.add('active-form');
+            document.getElementById('admin-form-title').textContent = "Admin Register";
+        });
+
+        document.getElementById('show-admin-login').addEventListener('click', () => {
+            document.getElementById('admin-register-form').classList.remove('active-form');
+            document.getElementById('admin-login-form').classList.add('active-form');
+            document.getElementById('admin-form-title').textContent = "Admin Login";
+        });
+    </script>
+
+    <script type="module" src="admin-login.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Payment - TicketEase</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #00416A;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-container h1 {
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        a.LinkButton {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #00416A;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        a.LinkButton:hover {
+            background-color: #2A9D8F;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: #2A9D8F;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #21867A;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="Logo">
+            <h1>TicketEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="LinkButton">Home</a>
+            <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+            <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+            <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+        </div>
+    </div>
+
+    <!-- Credit Card Payment Content -->
+    <div class="container">
+        <h2>Credit Card Payment</h2>
+        <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16">
+        </div>
+        <div class="form-group">
+            <label for="expiry">Expiry Date (MM/YY)</label>
+            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+        </div>
+        <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" placeholder="XXX" maxlength="3">
+        </div>
+        <button class="button" onclick="redirectToPaymentGateway()">Confirm Payment</button>
+    </div>
+
+    <script>
+        function redirectToPaymentGateway() {
+            localStorage.setItem('paymentMethod', 'Credit Card');
+            window.location.href = "payment_gateway.html"; // Redirect to payment gateway page
+        }
+    </script>
+
+</body>
+
+</html>

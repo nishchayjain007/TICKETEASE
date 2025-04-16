@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Railways - Online Ticketing Platform</title>
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2A3D45;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container img {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .logo-container h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+        }
+
+        .login-button {
+            background-color: #FFD700;
+            color: #1F2833;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #ccac00;
+        }
+
+        .welcome-section {
+            background-color: #1F2833;
+            padding: 50px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .welcome-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #FFD700;
+            font-family: 'Georgia', serif;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .welcome-section a {
+            background-color: #FFD700;
+            color: #1F2833;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .welcome-section a:hover {
+            background-color: #ccac00;
+        }
+
+        .services-section {
+            padding: 50px 20px;
+            background-color: #ebcfab;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(50%);
+        }
+
+        .card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            z-index: 2;
+        }
+
+        .card h3 {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .features-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 36px;
+            color: #2A3D45;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            max-width: 300px;
+            margin: 20px;
+        }
+
+        .feature h3 {
+            color: #2A3D45;
+            font-size: 24px;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .feedback-button {
+            display: block;
+            margin: 30px auto;
+            background-color: #FFD700;
+            color: #1F2833;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 200px;
+        }
+
+        .feedback-button:hover {
+            background-color: #ccac00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="Indian Railways Logo">
+            <h1>TicketEase</h1>
+        </div>
+        <a href="login.html" class="login-button">Login</a>
+    </div>
+
+    <div class="welcome-section">
+        <h2>Welcome to Indian Railways Online Ticketing Platform</h2>
+        <p>Your trusted partner for hassle-free train ticket booking, cancellations, and more. Enjoy the convenience and comfort of traveling across India with just a few clicks.</p>
+        <a href="login.html">Book Your Ticket Now</a> <!-- Redirects to login -->
+    </div>
+
+    <div class="services-section">
+        <div class="services-container">
+            <a href="Contact Us.html" class="card"> <!-- Redirects to Contact Us -->
+                <img src="train1.jpg" alt="Contact Us">
+                <div class="card-content">
+                    <h3>Contact Us</h3>
+                </div>
+            </a>
+            <a href="login.html" class="card"> <!-- Redirects to login -->
+                <img src="train4.jpg" alt="Book Ticket">
+                <div class="card-content">
+                    <h3>Book Ticket</h3>
+                </div>
+            </a>
+            <a href="feedback.html" class="card"> <!-- Redirects to feedback -->
+                <img src="train5.jpg" alt="Give Feedback">
+                <div class="card-content">
+                    <h3>Give Feedback</h3>
+                </div>
+            </a>
+            <a href="login.html" class="card"> <!-- Redirects to login -->
+                <img src="train3.jpg" alt="Cancel Ticket">
+                <div class="card-content">
+                    <h3>Cancel Ticket</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h2>Why Choose Us?</h2>
+        <div class="features-container">
+            <div class="feature">
+                <h3>Fast and Secure</h3>
+                <p>Experience the speed and security of our platform, ensuring a seamless ticketing process.</p>
+            </div>
+            <div class="feature">
+                <h3>Wide Connectivity</h3>
+                <p>Book tickets for trains across India, connecting you to every corner of the country.</p>
+            </div>
+            <div class="feature">
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support team is available around the clock to assist you with any inquiries.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Indian Railways. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

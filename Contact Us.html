@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TicketEase</title>
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2A3D45;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container img {
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .logo-container h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        a.LinkButton {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #FFD700;
+            color: #1F2833;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        a.LinkButton:hover {
+            background-color: #ccac00;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2A3D45;
+            font-family: 'Georgia', serif;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-info div {
+            width: 45%;
+            margin: 10px 0;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .button {
+            background-color: #2A9D8F;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #21867A;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="TicketEase Logo">
+            <h1>TicketEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="home.html" class="LinkButton">Home</a>
+            <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+            <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+            <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div>
+                <h3>Email Us</h3>
+                <p>support@ticketease.com</p>
+            </div>
+            <div>
+                <h3>Call Us</h3>
+                <p>1800-123-4567</p>
+            </div>
+            <div>
+                <h3>Our Address</h3>
+                <p>123, Indian Railways HQ, Mumbai, India</p>
+            </div>
+            <div>
+                <h3>Working Hours</h3>
+                <p>Mon-Fri: 9 AM - 6 PM</p>
+            </div>
+        </div>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Indian Railways. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

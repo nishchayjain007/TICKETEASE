@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details - TicketEase</title>
+    <style>
+        body {
+            background-color: #F0F4F8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+        .navbar {
+            background-color: #2A3D45;
+            padding: 15px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+        .logo-container h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        a.LinkButton {
+            text-decoration: none;
+            padding: 8px 15px;
+            background-color: #3E5C76;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        a.LinkButton:hover {
+            background-color: #1D3557;
+            transform: translateY(-2px);
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            margin: 50px auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            border: 1px solid #E0E0E0;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2A3D45;
+        }
+        select {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        select:focus {
+            outline: none;
+            border-color: #3E5C76;
+        }
+        .button {
+            background-color: #FF6F61;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #E63946;
+            transform: translateY(-2px);
+        }
+        .summary {
+            margin-top: 30px;
+            font-size: 18px;
+            background-color: #F1FAEE;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px dashed #A8DADC;
+        }
+        .warning {
+            color: #E63946;
+            animation: flash 1.5s infinite;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+            margin-top: 40px;
+        }
+        h2 {
+            color: #1D3557;
+            border-bottom: 2px solid #A8DADC;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo-container">
+        <img src="logolocal.png" alt="Logo">
+        <h1>TicketEase</h1>
+    </div>
+    <div class="nav-links">
+        <a href="home.html" class="LinkButton">Home</a>
+        <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+        <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+        <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+    </div>
+</div>
+
+<!-- Booking Details Form -->
+<div class="container">
+    <h2>Booking Details</h2>
+    <div class="form-group">
+        <label for="adult">Adults</label>
+        <select id="adult">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="child">Children</label>
+        <select id="child">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="ticket-type">Ticket Type</label>
+        <select id="ticket-type">
+            <option value="journey">Journey</option>
+            <option value="return">Return</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="half-yearly">Half-Yearly</option>
+            <option value="yearly">Yearly</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="train-type">Train Type</label>
+        <select id="train-type">
+            <option value="ordinary">Ordinary</option>
+            <option value="ac">AC</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="class-type">Class</label>
+        <select id="class-type">
+            <option value="second">Second</option>
+            <option value="first">First</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="payment-type">Payment Type</label>
+        <select id="payment-type">
+            <option value="upi">UPI</option>
+            <option value="cc">Credit Card/Debit Card</option>
+            <option value="netbanking">Netbanking</option>
+        </select>
+    </div>
+
+    <!-- Concession Section -->
+    <div class="form-group">
+        <label><input type="checkbox" id="concession" onclick="toggleConcession()"> Avail Concession</label>
+        <select id="concession-type" style="display: none;">
+            <option value="10">Blind with escort (10%)</option>
+            <option value="15">Blind alone (15%)</option>
+            <option value="10">Deaf and Dumb with escort (10%)</option>
+            <option value="12">Physically Handicapped (12%)</option>
+        </select>
+    </div>
+
+    <div class="summary">
+        <p><strong>Source:</strong> <span id="source-display"></span></p>
+        <p><strong>Destination:</strong> <span id="destination-display"></span></p>
+        <p><strong>Total Fare:</strong> <span id="total-fare">₹131</span></p>
+    </div>
+
+    <p class="warning">Journey should commence in 1 hour</p>
+
+    <button class="button" onclick="proceedToPayment()">Proceed to Payment</button>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 TicketEase. All rights reserved.</p>
+</footer>
+
+<script>
+// Fare rates based on train and class
+const fareRates = {
+    ordinary: { second: 50, first: 100 },
+    ac: { second: 100, first: 200 }
+};
+
+// Get source and destination from URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const source = urlParams.get('source');
+const destination = urlParams.get('destination');
+
+// Display source and destination
+document.getElementById('source-display').textContent = source;
+document.getElementById('destination-display').textContent = destination;
+
+// Calculate fare with concession if applicable
+function calculateFare() {
+    const adults = parseInt(document.getElementById('adult').value);
+    const children = parseInt(document.getElementById('child').value);
+    const ticketType = document.getElementById('ticket-type').value;
+    const trainType = document.getElementById('train-type').value;
+    const classType = document.getElementById('class-type').value;
+    const concessionCheckbox = document.getElementById('concession');
+    const concessionType = concessionCheckbox.checked ? document.getElementById('concession-type').value : 0;
+
+    let baseFare = fareRates[trainType][classType];
+
+    // Modify base fare based on ticket type
+    switch (ticketType) {
+        case 'return': baseFare *= 2; break;
+        case 'monthly': baseFare *= 10; break;
+        case 'quarterly': baseFare *= 25; break;
+        case 'half-yearly': baseFare *= 50; break;
+        case 'yearly': baseFare *= 100; break;
+    }
+
+    // Calculate total fare based on adults, children, and concession
+    const totalFare = (adults + (children * 0.5)) * baseFare;
+    const concessionDiscount = (totalFare * parseInt(concessionType)) / 100;
+    const finalFare = totalFare - concessionDiscount;
+
+    // Update total fare display
+    document.getElementById('total-fare').textContent = `₹${finalFare.toFixed(2)}`;
+    return finalFare;
+}
+
+// Toggle concession dropdown visibility and recalculate fare
+function toggleConcession() {
+    const concessionCheckbox = document.getElementById('concession');
+    const concessionType = document.getElementById('concession-type');
+    concessionType.style.display = concessionCheckbox.checked ? 'block' : 'none';
+    
+    // Immediately recalculate fare when concession is toggled
+    calculateFare();
+}
+
+// Proceed to payment page based on payment type
+function proceedToPayment() {
+    const fare = calculateFare();
+    const ticketType = document.getElementById('ticket-type').value;
+    const startDate = new Date();
+    let endDate = new Date();
+
+    // Calculate end date for monthly, quarterly, half-yearly, and yearly tickets
+    switch (ticketType) {
+        case 'monthly':
+            endDate.setMonth(startDate.getMonth() + 1);
+            break;
+        case 'quarterly':
+            endDate.setMonth(startDate.getMonth() + 3);
+            break;
+        case 'half-yearly':
+            endDate.setMonth(startDate.getMonth() + 6);
+            break;
+        case 'yearly':
+            endDate.setFullYear(startDate.getFullYear() + 1);
+            break;
+    }
+
+    // Store ticket details in localStorage
+    localStorage.setItem('fare', fare);
+    localStorage.setItem('source', source);
+    localStorage.setItem('destination', destination);
+    localStorage.setItem('ticketType', ticketType);
+    localStorage.setItem('startDate', startDate.toDateString());
+    localStorage.setItem('endDate', endDate.toDateString());
+
+    const paymentType = document.getElementById('payment-type').value;
+
+    // Redirect based on payment type
+    if (paymentType === 'upi') {
+        window.location.href = 'UPI Payment Page.html';
+    } else if (paymentType === 'cc') {
+        window.location.href = 'Credit Card Payment Page.html';
+    } else if (paymentType === 'netbanking') {
+        window.location.href = 'Netbanking Payment Page.html';
+    }
+}
+
+// Update fare on input changes
+document.querySelectorAll('#adult, #child, #ticket-type, #train-type, #class-type, #concession-type').forEach(element => {
+    element.addEventListener('change', calculateFare);
+});
+
+// Trigger fare recalculation on concession toggle
+document.getElementById('concession').addEventListener('change', toggleConcession);
+
+// Initial fare calculation on page load
+window.onload = calculateFare;
+</script>
+
+</body>
+</html>

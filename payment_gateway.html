@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway - TicketEase</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #00416A;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-container h1 {
+            color: white;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .bank-logo {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: #2A9D8F;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #21867A;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="Logo">
+            <h1>TicketEase</h1>
+        </div>
+    </div>
+
+    <!-- Payment Gateway Content -->
+    <div class="container">
+        <h2>Payment Gateway</h2>
+        <img src="icici.jpg" alt="ICICI Bank" class="bank-logo">
+        <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="password" id="otp" placeholder="Enter OTP" maxlength="4">
+        </div>
+        <button class="button" onclick="confirmPayment()">Confirm Payment</button>
+    </div>
+
+    <script>
+        function confirmPayment() {
+            const validOtps = ['0007', '1236', '7861', '9820', '1048', '0609'];
+            const enteredOtp = document.getElementById('otp').value;
+
+            if (validOtps.includes(enteredOtp)) {
+                alert("Payment Successful! Redirecting to receipt...");
+                window.location.href = "Payment Receipt Page.html"; // Redirect to receipt page
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

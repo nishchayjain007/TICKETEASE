@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt - TicketEase</title>
+    <style>
+        body {
+            background-color: #F7F7F7;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #00416A;
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Logo styling in navbar */
+        .navbar img.logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a.LinkButton {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #00416A;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a.LinkButton:hover {
+            background-color: #2A9D8F;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            border: 1px solid #00416A;
+            position: relative;
+        }
+
+        /* Receipt styling */
+        .container h2 {
+            text-align: center;
+            color: #00416A;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Enlarged stamp image */
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #00416A;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Button styling */
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .button {
+            flex: 1;
+            background-color: #2A9D8F;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #21867A;
+        }
+
+        /* Thank you message styling */
+        .thank-you-message {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>
+            <img src="logolocal.png" alt="Logo" class="logo">
+            TicketEase
+        </h1>
+        <div class="nav-links">
+            <a href="home.html" class="LinkButton">Home</a>
+            <a href="book-ticket.html" class="LinkButton">Book Ticket</a>
+            <a href="Payment Receipt Page.html" class="LinkButton">Show Ticket</a>
+            <a href="cancel_ticket.html" class="LinkButton">Cancel Ticket</a>
+        </div>
+    </div>
+
+    <!-- Payment Receipt Content -->
+    <div class="container">
+        <!-- Enlarged stamp image indicating booking confirmation -->
+        <img src="images.png" alt="Booking Confirmed Stamp" class="stamp">
+
+        <h2>Your Ticket Receipt</h2>
+        <table>
+            <tr>
+                <th>Ticket No:</th>
+                <td id="ticketNo"></td>
+            </tr>
+            <tr>
+                <th>Source:</th>
+                <td id="source"></td>
+            </tr>
+            <tr>
+                <th>Destination:</th>
+                <td id="destination"></td>
+            </tr>
+            <tr>
+                <th>Ticket Type:</th>
+                <td id="ticketType"></td>
+            </tr>
+            <tr id="startDateRow" style="display: none;">
+                <th>Start Date:</th>
+                <td id="startDate"></td>
+            </tr>
+            <tr id="endDateRow" style="display: none;">
+                <th>End Date:</th>
+                <td id="endDate"></td>
+            </tr>
+            <tr>
+                <th>Total Fare:</th>
+                <td id="totalFare"></td>
+            </tr>
+            <tr>
+                <th>Payment Method:</th>
+                <td id="paymentMethod"></td>
+            </tr>
+            <tr>
+                <th>Booking Date & Time:</th>
+                <td id="bookingDateTime"></td>
+            </tr>
+        </table>
+
+        <div class="button-container">
+            <button class="button" onclick="printReceipt()">Print Receipt</button>
+            <button class="button" onclick="goToHome()">Go to Home</button>
+        </div>
+
+        <div class="thank-you-message">
+            Thank you for booking with TicketEase. Have a safe and pleasant journey!
+        </div>
+    </div>
+
+    <script>
+        // User's email for receipt notification
+        const userEmail = "xxxxx@gmail.com"; // Replace this with the email of the logged-in user
+
+        // Function to populate the receipt with data from localStorage
+        window.onload = function() {
+            const ticketNo = localStorage.getItem('ticketNo') || 'N/A';
+            const source = localStorage.getItem('source') || 'N/A';
+            const destination = localStorage.getItem('destination') || 'N/A';
+            const ticketType = localStorage.getItem('ticketType') || 'N/A';
+            const fare = localStorage.getItem('fare') || 'N/A';
+            const paymentMethod = localStorage.getItem('paymentMethod') || 'N/A';
+            const startDate = localStorage.getItem('startDate') || 'N/A';
+            const endDate = localStorage.getItem('endDate') || 'N/A';
+
+            document.getElementById('ticketNo').textContent = ticketNo;
+            document.getElementById('source').textContent = source;
+            document.getElementById('destination').textContent = destination;
+            document.getElementById('ticketType').textContent = ticketType;
+            document.getElementById('totalFare').textContent = fare ? `₹${fare}` : 'N/A';
+            document.getElementById('paymentMethod').textContent = paymentMethod;
+
+            if (['monthly', 'quarterly', 'half-yearly', 'yearly'].includes(ticketType)) {
+                document.getElementById('startDateRow').style.display = 'table-row';
+                document.getElementById('endDateRow').style.display = 'table-row';
+                document.getElementById('startDate').textContent = startDate;
+                document.getElementById('endDate').textContent = endDate;
+            }
+
+            const bookingDateTime = new Date().toLocaleString();
+            document.getElementById('bookingDateTime').textContent = bookingDateTime;
+        }
+
+        // Function to print the receipt and show notification
+        function printReceipt() {
+            alert(`The receipt will be sent to your email: ${userEmail}`);
+            window.print();
+        }
+
+        // Function to navigate back to home
+        function goToHome() {
+            window.location.href = "home.html";
+        }
+    </script>
+
+</body>
+</html>

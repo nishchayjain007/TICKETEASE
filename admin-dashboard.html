@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TicketEase</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2A3D45;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container img {
+            height: 60px;
+        }
+
+        .logo-container h1 {
+            font-size: 28px;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Georgia', serif;
+        }
+
+        .logout-button {
+            background-color: #FFD700;
+            color: #1F2833;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #ccac00;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #2A3D45;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2A3D45;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #FFD700;
+            color: #1F2833;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #ccac00;
+        }
+
+        .dashboard-content {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2A3D45;
+            color: white;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="logolocal.png" alt="TicketEase Logo">
+            <h1>Admin Dashboard - TicketEase</h1>
+        </div>
+        <button onclick="logout()" class="logout-button">Logout</button>
+    </div>
+
+    <div class="container">
+        <h2>Welcome, Admin!</h2>
+        <p>Manage ticket bookings, add train schedules, view reports, and monitor system updates below.</p>
+
+        <!-- Dashboard Options -->
+        <div class="dashboard-grid">
+            <!-- Existing Cards -->
+            <div class="card"><h3>Manage Ticket Bookings</h3><p>View, edit, or cancel current bookings made by users.</p><button onclick="loadBookings()">View Bookings</button></div>
+            <div class="card"><h3>View Reports</h3><p>Access detailed reports on ticket sales, user activity, and train occupancy rates.</p><button onclick="loadReports()">View Reports</button></div>
+            <div class="card"><h3>Add New Train Schedule</h3><p>Add new train schedules with customizable timings, dates, and stops.</p><button onclick="loadAddTrain()">Add Train</button></div>
+            <div class="card"><h3>Update Train Details</h3><p>Edit existing train schedules to update timings, dates, and stop locations.</p><button onclick="loadUpdateTrain()">Update Trains</button></div>
+            <div class="card"><h3>System Maintenance</h3><p>Monitor system health, perform updates, and ensure seamless operation for users.</p><button onclick="loadMaintenance()">Monitor System</button></div>
+
+            <!-- New Cards for Schedule and Seat Management -->
+            <div class="card"><h3>Schedule Management</h3><p>Manage and update train schedules for real-time accuracy.</p><button onclick="loadScheduleManagement()">Manage Schedules</button></div>
+            <div class="card"><h3>Seat Management</h3><p>Update seat availability for all trains.</p><button onclick="loadSeatManagement()">Manage Seats</button></div>
+        </div>
+
+        <!-- Dynamic Content Area -->
+        <div id="dashboard-content" class="dashboard-content">
+            <h3>Dashboard Content</h3>
+            <p>Select an option above to view more details.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TicketEase. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const content = document.getElementById('dashboard-content');
+
+        function logout() {
+            // Placeholder logout logic
+            alert("Logging out...");
+            localStorage.removeItem('adminEmail');
+            window.location.href = "admin-login.html";
+        }
+
+        function loadBookings() { 
+            content.innerHTML = `
+                <h3>Manage Ticket Bookings</h3>
+                <p>Below are the current ticket bookings:</p>
+                <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+                    <thead>
+                        <tr><th>Booking ID</th><th>User</th><th>Train</th><th>Date</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>12345</td><td>Nishchay Jain </td><td>CHURCHGATE FAST A0732</td><td>2024-10-20</td><td><button onclick="alert('Edit/Cancel feature coming soon')">Edit/Cancel</button></td></tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        function loadReports() {
+            content.innerHTML = `
+                <h3>View Reports</h3>
+                <p>Here are some recent reports:</p>
+                <ul>
+                    <li><strong>Ticket Sales Report - October 2024:</strong> 1200 tickets sold</li>
+                </ul>
+                <button onclick="alert('Detailed reports sent to your email id "xxxxxx07@gmail.com"')">Download Full Report</button>
+            `;
+        }
+
+        function loadAddTrain() {
+            content.innerHTML = `
+                <h3>Add New Train Schedule</h3>
+                <form onsubmit="event.preventDefault(); alert('Train schedule added successfully!')">
+                    <label for="train-name">Train Name:</label>
+                    <input type="text" id="train-name" placeholder="Enter train name" required><br><br>
+                    <label for="train-date">Date:</label>
+                    <input type="date" id="train-date" required><br><br>
+                    <label for="train-time">Time:</label>
+                    <input type="time" id="train-time" required><br><br>
+                    <button type="submit">Add Train</button>
+                </form>
+            `;
+        }
+
+        function loadUpdateTrain() {
+            content.innerHTML = `
+                <h3>Update Train Details</h3>
+                <form onsubmit="event.preventDefault(); alert('Train details updated successfully!')">
+                    <label for="update-train-id">Train ID:</label>
+                    <input type="text" id="update-train-id" placeholder="Enter train ID" required><br><br>
+                    <label for="update-train-date">New Date:</label>
+                    <input type="date" id="update-train-date" required><br><br>
+                    <label for="update-train-time">New Time:</label>
+                    <input type="time" id="update-train-time" required><br><br>
+                    <button type="submit">Update Train</button>
+                </form>
+            `;
+        }
+
+        function loadScheduleManagement() {
+            content.innerHTML = `
+                <h3>Schedule Management</h3>
+                <p>Update or remove train schedules to keep passenger information current.</p>
+                <form onsubmit="event.preventDefault(); alert('Schedule updated successfully!')">
+                    <label for="schedule-train-id">Train ID:</label>
+                    <input type="text" id="schedule-train-id" placeholder="Enter train ID" required><br><br>
+                    <label for="schedule-date">New Date:</label>
+                    <input type="date" id="schedule-date" required><br><br>
+                    <label for="schedule-time">New Time:</label>
+                    <input type="time" id="schedule-time" required><br><br>
+                    <button type="submit">Update Schedule</button>
+                </form>
+            `;
+        }
+
+        function loadSeatManagement() {
+            content.innerHTML = `
+                <h3>Seat Management</h3>
+                <p>Update seat availability for each train.</p>
+                <form onsubmit="event.preventDefault(); alert('Seat availability updated successfully!')">
+                    <label for="seat-train-id">Train ID:</label>
+                    <input type="text" id="seat-train-id" placeholder="Enter train ID" required><br><br>
+                    <label for="seat-availability">Available Seats:</label>
+                    <input type="number" id="seat-availability" min="0" placeholder="Enter available seats" required><br><br>
+                    <button type="submit">Update Seats</button>
+                </form>
+            `;
+        }
+    </script>
+</body>
+</html>
