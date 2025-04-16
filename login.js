@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 
 // Firebase configuration for your app
 const firebaseConfig = {
-    apiKey: "AIzaSyD_VCPVwnDGVm8PVTMHAYLxye2cVBK_hY0",
+    apiKey: "--",
     authDomain: "ticketease-acb85.firebaseapp.com",
     projectId: "ticketease-acb85",
     storageBucket: "ticketease-acb85.appspot.com",
